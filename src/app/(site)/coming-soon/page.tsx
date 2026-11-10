@@ -6,7 +6,7 @@ import { ImageReveal, Reveal } from "@/components/motion";
 import { IMG, waLink } from "@/lib/content";
 
 const SIDE_IMG: Record<string, string> = {
-  journal: "/images/journal-1.jpg",
+  journal: "/images/journal-3.jpg",
   properties: "/images/prop-1.jpg",
   whatsapp: "/images/svc-diaspora.jpg",
 };
