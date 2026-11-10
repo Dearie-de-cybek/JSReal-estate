@@ -13,7 +13,6 @@ export const SERVICES = [
       "Honest advice, including when the answer is “wait” or “not this one”",
     ],
     steps: ["Introductory conversation", "Goals and budget review", "Options and risks, in writing", "Decide, proceed or pause"],
-    variant: "dusk" as const,
   },
   {
     slug: "investment-guidance",
@@ -29,7 +28,6 @@ export const SERVICES = [
       "Guidance on how much of your capital a single property should represent",
     ],
     steps: ["Define the objective", "Compare opportunities", "Stress-test the assumptions", "Plan the hold and the exit"],
-    variant: "lines" as const,
   },
   {
     slug: "property-search-assistance",
@@ -45,7 +43,6 @@ export const SERVICES = [
       "Support through negotiation, payment structure and handover",
     ],
     steps: ["Search brief", "Shortlist and inspect", "Verify with your lawyer and surveyor", "Negotiate and complete"],
-    variant: "court" as const,
   },
   {
     slug: "diaspora-property-guidance",
@@ -61,7 +58,6 @@ export const SERVICES = [
       "Advice on traceable payment routes and record-keeping",
     ],
     steps: ["Remote briefing", "Shortlist and live walkthroughs", "Independent verification", "Documented, traceable completion"],
-    variant: "dusk" as const,
   },
 ];
 

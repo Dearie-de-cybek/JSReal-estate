@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero, ClosingCta } from "@/components/page-hero";
-import { Photo } from "@/components/plate";
+import { Photo } from "@/components/photo";
+import { SERVICE_IMG } from "@/lib/content";
 import { Reveal, ImageReveal } from "@/components/motion";
 import { Arrow } from "@/components/brand";
 import { SERVICES } from "@/lib/services";
@@ -38,7 +39,7 @@ export default function Advisory() {
           <section key={s.slug} id={s.slug} className="scroll-mt-28 grid gap-12 border-t border-[var(--line)] pt-16 lg:grid-cols-12" aria-labelledby={`${s.slug}-h`}>
             <div className={`lg:col-span-5 ${i % 2 ? "lg:order-2 lg:col-start-8" : ""}`}>
               <ImageReveal className="aspect-[4/5]">
-                <Photo src="" alt={s.title} variant={s.variant} className="h-full w-full" />
+                <Photo src={SERVICE_IMG[s.slug]} alt={s.title} className="h-full w-full" sizes="(min-width:1024px) 40vw, 100vw" />
               </ImageReveal>
             </div>
             <Reveal className={`lg:col-span-6 ${i % 2 ? "lg:col-start-1 lg:row-start-1" : "lg:col-start-7"}`}>

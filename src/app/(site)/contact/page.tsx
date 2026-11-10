@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { EnquiryForm } from "@/components/forms";
-import { getSettings, waLink } from "@/lib/settings";
+import { SITE, waLink } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Book a consultation or send an enquiry by WhatsApp, phone, email or form.",
+  description: "Book a consultation or send an enquiry by WhatsApp, phone or email.",
   alternates: { canonical: "/contact" },
 };
 
 export default async function Contact({ searchParams }: { searchParams: Promise<{ type?: string; message?: string }> }) {
-  const [{ type, message }, s] = await Promise.all([searchParams, getSettings()]);
+  const { type, message } = await searchParams;
+  const s = SITE;
   const rows: [string, string, string | null][] = [
-    ["WhatsApp", s.whatsapp ? `+${s.whatsapp.replace(/\D/g, "")}` : "", s.whatsapp ? waLink(s, "Hello Jorbe, I'd like to discuss a property decision.") : null],
+    ["WhatsApp", s.whatsapp ? `+${s.whatsapp.replace(/\D/g, "")}` : "", s.whatsapp ? waLink("Hello Jorbe, I'd like to discuss a property decision.") : null],
     ["Telephone", s.phone, s.phone ? `tel:${s.phone.replace(/\s/g, "")}` : null],
     ["Email", s.email, s.email ? `mailto:${s.email}` : null],
   ];
@@ -28,11 +29,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
       />
       <div className="container-x grid gap-16 pb-32 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <EnquiryForm
-            defaultType={type}
-            defaultMessage={message}
-            whatsapp={s.whatsapp}
-          />
+          <EnquiryForm defaultType={type} defaultMessage={message} />
         </div>
         <aside className="lg:col-span-4 lg:col-start-9">
           <h2 className="label">Direct</h2>
@@ -43,7 +40,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
                 {v && h ? (
                   <a href={h} className="underline-hover mt-1 inline-block font-serif text-2xl" {...(k === "WhatsApp" ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{v}</a>
                 ) : (
-                  <p className="mt-1 text-slate-ink">To be added by the owner.</p>
+                  <p className="mt-1 text-slate-ink">Coming soon.</p>
                 )}
               </li>
             ))}
@@ -59,7 +56,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
             </>
           )}
           <p className="mt-12 border-l-2 border-gold pl-4 text-sm text-slate-ink">
-            A first conversation is an exchange of information. There is no obligation to proceed, and no payment is ever requested through this form.
+            A first conversation is an exchange of information. There is no obligation to proceed, and no payment is ever requested through this site.
           </p>
         </aside>
       </div>

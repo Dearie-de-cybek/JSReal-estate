@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero, ClosingCta } from "@/components/page-hero";
-import { Photo } from "@/components/plate";
+import { Photo } from "@/components/photo";
 import { ImageReveal, Reveal } from "@/components/motion";
-import { getSettings } from "@/lib/settings";
+import { IMG, SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-export default async function About() {
-  const s = await getSettings();
-  const values = s.values.split("|").filter(Boolean);
+export default function About() {
+  const s = SITE;
+  const values = s.values;
   return (
     <>
       <PageHero
@@ -24,7 +24,7 @@ export default async function About() {
       <section className="container-x grid gap-16 pb-28 lg:grid-cols-12" aria-labelledby="intro">
         <div className="lg:col-span-5">
           <ImageReveal className="aspect-[4/5] lg:sticky lg:top-28">
-            <Photo src={s.portraitImage} alt="Portrait of Jorbe Samuel" variant="portrait" className="h-full w-full" priority />
+            <Photo src={IMG.consultant} alt="A considered interior" className="h-full w-full" priority sizes="(min-width:1024px) 40vw, 100vw" />
           </ImageReveal>
         </div>
         <div className="space-y-24 lg:col-span-6 lg:col-start-7">

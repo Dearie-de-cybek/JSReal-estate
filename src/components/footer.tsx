@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Monogram } from "./brand";
 import { NewsletterForm } from "./forms";
-import type { Settings } from "@/lib/settings";
+import { SITE } from "@/lib/content";
 
 const links = [
   ["About", "/about"],
@@ -11,7 +11,8 @@ const links = [
   ["Contact", "/contact"],
 ];
 
-export function Footer({ s }: { s: Settings }) {
+export function Footer() {
+  const s = SITE;
   const socials = [
     ["Instagram", s.instagram],
     ["LinkedIn", s.linkedin],
@@ -59,9 +60,7 @@ export function Footer({ s }: { s: Settings }) {
 
           <div className="lg:col-span-3">
             <p className="eyebrow mb-5">The Property Letter</p>
-            <p className="mb-5 text-[0.95rem] opacity-75">
-              New articles and guides, when there is something worth saying. No noise.
-            </p>
+            <p className="mb-5 text-[0.95rem] opacity-75">Coming soon. Join the waiting list for new articles and guides.</p>
             <NewsletterForm />
           </div>
         </div>

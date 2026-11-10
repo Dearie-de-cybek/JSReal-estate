@@ -2,11 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  images: {
-    formats: ["image/avif", "image/webp"],
-    // Add your image CDN host here (e.g. res.cloudinary.com) if you store images remotely.
-    remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
-  },
+  images: { formats: ["image/avif", "image/webp"] },
   async headers() {
     return [
       {
