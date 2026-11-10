@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jorbe Samuel — Private Property Journal
 
-## Getting Started
+Premium real-estate advisory platform: public editorial site + a practical admin CMS.
+Next.js 16 · TypeScript · Tailwind 4 · Motion · Prisma 7 (libSQL/SQLite) · Zod · jose + bcrypt.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env        # then set AUTH_SECRET (openssl rand -base64 32), SITE_URL, ADMIN_EMAIL, ADMIN_PASSWORD (12+ chars)
+npm run db:push             # create tables
+npm run db:seed             # admin user, categories, starter articles, FAQs
+npm run dev                 # http://localhost:3000   · admin: /admin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Change the admin password immediately (Admin → My password). `npm run db:demo` adds three clearly-labelled SAMPLE properties for design review; `npx tsx prisma/demo.ts --remove` deletes them. Never run it on a live site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What the owner manages (no developer needed) — `/admin`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Area | Does |
+|---|---|
+| Properties | create/edit, inline price + availability updates, multi-image upload with reorder/alt text, documentation status, draft/publish, feature on homepage |
+| Articles | Markdown editor, categories, cover image, draft/publish, featured |
+| Downloads | upload PDF guides/checklists (download counts) |
+| FAQs | add/edit/hide/reorder (also emitted as FAQ structured data) |
+| Enquiries | inbox, status, private notes, one-click email/WhatsApp |
+| Profile & contact | hero + portrait photos, WhatsApp/phone/email/socials, story, approach, values |
+| Users | Admin and Editor roles (Editors cannot change profile/users or delete enquiries) |
 
-## Learn More
+## Honesty rules built into the product
 
-To learn more about Next.js, take a look at the following resources:
+- Properties are **only** from the database; nothing is hard-coded. No properties = a graceful empty state.
+- A price is shown only if “price verified” is ticked; otherwise “Price on request”.
+- Documentation reads “not yet independently verified” unless an admin sets **Verified** (the verified date is then shown).
+- No testimonials, stats, credentials or awards exist anywhere. Placeholder copy is labelled (`[Placeholder …]` in the story).
+- Hero/portrait/section art is a clearly-marked illustrated stand-in until real photography is uploaded in **Profile & contact**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Security
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+httpOnly signed session cookie (7d), bcrypt (cost 12), login rate-limit, server-side role checks in every action and layout, same-origin checks on public POST routes, Zod validation, honeypot + time-trap + per-IP rate limits on forms, upload allow-list with magic-byte sniffing and size caps, markdown HTML escaping, JSON-LD escaping, security headers. The in-memory rate limiter is per-instance — use Redis/Upstash if you scale horizontally.
 
-## Deploy on Vercel
+## Integrations (all optional, via `.env`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` analytics · `RESEND_API_KEY` + `NOTIFY_EMAIL` enquiry emails · `DATABASE_URL` + `DATABASE_AUTH_TOKEN` for Turso (hosted libSQL) · newsletter subscribers are stored in the DB (export from the DB or connect a provider later).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying
+
+- **VPS / Railway / Fly with a volume (simplest):** `npm run build && npm start`. Keep `dev.db` and `public/uploads/` on persistent storage and back them up.
+- **Vercel/serverless:** point `DATABASE_URL` at Turso, and replace the local-disk write in `src/app/api/admin/upload/route.ts` with an object store (Cloudinary/S3/R2); add the host to `images.remotePatterns` in `next.config.ts`.
+- Set `SITE_URL` to the real domain (sitemap, canonical URLs, structured data).
+
+## To do before launch
+
+Replace placeholder story/contact details, upload hero + portrait photography, review/replace the starter articles (general education, not legal advice) and the privacy policy with a lawyer, set a strong `AUTH_SECRET`, and change the seeded admin password.
