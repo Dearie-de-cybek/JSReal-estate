@@ -8,23 +8,26 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
-## Editing content
+Everything editable lives in **`src/lib/content.ts`**.
 
-All copy that was previously CMS-driven now lives in `src/lib/content.ts`:
+## Contact (section 4)
+Fill `SITE` (WhatsApp digits, email, phone, social URLs, office city, hours). Links, the footer, the contact page and every WhatsApp button light up automatically; blanks show "Coming soon". The consultation/enquiry form opens a pre-filled WhatsApp chat (or email draft). Nothing is stored.
 
-- `SITE` — WhatsApp, phone, email, socials, story, approach, values. Blank values stay hidden / show "coming soon". The contact form opens a pre-filled WhatsApp chat (or an email draft if only email is set). Nothing is stored.
-- `PROPERTIES` — dummy teasers. Cards show the photo blurred with a "Coming soon" overlay and link to `/coming-soon`.
-- `ARTICLES` — dummy Journal entries; every one links to `/coming-soon`.
-- Services live in `src/lib/services.ts`.
+## About (section 1)
+Replace the `[Jorbe to add]` placeholders in `ABOUT.story` (chapters), `ABOUT.background` (timeline; delete the array items to hide it), and adjust `approach`, `steps`, `values`, `clients`. Add a real portrait as `public/images/consultant.jpg` (4:5 works best).
+
+## Properties (section 2)
+Each entry in `PROPERTIES` gets its own page at `/properties/<slug>` (gallery, overview, price, documentation status, disclaimers, WhatsApp + form enquiry).
+1. Put photos in `public/images/properties/` and fill in the verified details.
+2. Set `released: true` (the card un-blurs and links to its page; until then it is a blurred "Coming soon" teaser).
+3. `priceVerified: true` shows the price; `documentation.status: "verified"` only after an independent lawyer confirms.
+Add more entries by copying one; the filters and sitemap pick them up.
+
+## Knowledge Room (section 3)
+Add an entry to `ARTICLES` with a `body` (lightweight markdown: `##` headings build the table of contents, `-` lists, `1.` lists, `>` notes, `**bold**`) and `published: true`. Article pages include reading time, progress bar, TOC, prev/next and related reading. The three starter articles are editorial drafts for Jorbe to review. Downloadable guides: drop a PDF in `public/guides/` and set `file` on a `GUIDES` entry; empty = "Coming soon". FAQs live in `FAQS`.
 
 ## Images
-
-Real photography is in `public/images/` (sourced from Unsplash; review the licence terms at https://unsplash.com/license before commercial use, and swap in Jorbe's own photography when available — keep the same filenames and nothing else changes). The "consultant" slot currently shows an interior, not a person: drop Jorbe's real portrait in as `public/images/consultant.jpg`.
+Photos in `public/images/` are from Unsplash (free licence: https://unsplash.com/license). Swap in Jorbe's own photography using the same filenames.
 
 ## Optional env
-
-`SITE_URL` (canonical URLs/sitemap), `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`.
-
-## Before launch
-
-Fill `SITE`, replace the placeholder story, add a real portrait, and have the privacy policy reviewed.
+`SITE_URL`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`.
