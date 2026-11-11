@@ -7,8 +7,8 @@
 
 export const SITE = {
   // Fill these in and every WhatsApp / email / phone / social link appears automatically.
-  whatsapp: "", // international digits only, e.g. "2348012345678"
-  phone: "", // e.g. "+234 801 234 5678"
+  whatsapp: "2348158022477", // international digits only (0815 802 2477)
+  phone: "+234 815 802 2477",
   email: "", // professional email, e.g. "hello@yourdomain.com"
   instagram: "", // full https:// profile URLs
   linkedin: "",
