@@ -37,47 +37,82 @@ export const SOCIALS: [string, string][] = (
 /* ───────────────────────── About / consultant ───────────────────────── */
 
 export const ABOUT = {
-  // Your story, told in chapters. Replace each body with your own words.
+  opening: "Real estate is more than property. It's about the decisions, dreams and futures people attach to it.",
+  intro:
+    "I'm Jorbe Samuel, a real estate consultant with a growing passion for helping people make better-informed property decisions.",
+  /** The three tags shown under the hero. */
+  pillars: [
+    { icon: "home", label: "Property", text: "Opportunities worth your attention" },
+    { icon: "trending", label: "Wealth", text: "A long-term financial decision" },
+    { icon: "lightbulb", label: "Smart decisions", text: "Informed, never rushed" },
+  ] as { icon: string; label: string; text: string }[],
+  // Jorbe's story in his own words. `quote` is the headline line; `body` is revealed under "Read more".
   story: [
     {
-      title: "How it began",
-      body: "[Jorbe to add — the moment or experience that first drew you to real estate. Keep it specific and true: where you were, what you saw, what you decided.]",
+      icon: "compass",
+      title: "My journey",
+      quote: "Real estate is about much more than buying land or owning a building.",
+      body: [
+        "My journey into real estate has been shaped by an interest in property, wealth creation and the opportunities that come from making thoughtful financial decisions.",
+        "Over time, I've come to appreciate that real estate is about much more than buying land or owning a building. For many people, it represents years of hard work, financial sacrifice, family security and the hope of building something that lasts.",
+        "That understanding has influenced how I want to approach this profession.",
+      ],
     },
     {
-      title: "What I kept noticing",
-      body: "[Jorbe to add — the problem you saw buyers facing (documents, trust, information gaps) that made you want to do this differently.]",
+      icon: "heart",
+      title: "What I believe",
+      quote: "These are real concerns, and they deserve more than a sales pitch.",
+      body: [
+        "One of the biggest challenges people face when considering real estate isn't simply finding a property. It's knowing which opportunity is right for them, understanding what they're committing their money to and having the confidence to make that decision.",
+        "A first-time buyer may be worried about making an expensive mistake. An investor may be trying to understand whether an opportunity aligns with their financial goals. Someone living abroad may want to invest in Nigeria but struggle with knowing whom to trust and how to verify what they're being offered.",
+        "These are real concerns, and I believe they deserve more than a sales pitch. People should have access to clear information, honest conversations and the right guidance before making important property decisions.",
+      ],
     },
     {
-      title: "Where I am now",
-      body: "[Jorbe to add — who you work with today and what a good outcome looks like for them.]",
+      icon: "chat",
+      title: "How I work",
+      quote: "My approach begins with understanding the person, not simply presenting a property.",
+      body: [
+        "I want to understand what someone is trying to achieve, their financial considerations, their concerns and what matters most to them. From there, I can help them explore relevant opportunities, understand the details, ask better questions and identify where further professional verification is necessary.",
+        "I don't believe every property is right for every person, and I don't believe anyone should feel pressured into making a decision they don't fully understand.",
+      ],
     },
-  ],
-  // Background timeline. Only add what you can stand behind (roles, years, training). Leave empty to hide.
-  background: [
-    { when: "[Year]", what: "[Jorbe to add — a role, training or milestone]" },
-    { when: "[Year]", what: "[Jorbe to add — a role, training or milestone]" },
-    { when: "[Year]", what: "[Jorbe to add — a role, training or milestone]" },
-  ] as { when: string; what: string }[],
-  approach:
-    "I start with questions, not listings. What is the money for? How long can it stay invested? What would make this decision a bad one? Only then do we look at property.",
+  ] as { icon: string; title: string; quote: string; body: string[] }[],
+  // Background timeline intentionally empty (nothing supplied yet). Add { when, what } items to show it.
+  background: [] as { when: string; what: string }[],
   steps: [
-    ["Listen", "What is the money for, and what would a good outcome look like?"],
-    ["Test", "Do the numbers, the timeline and your appetite for risk actually hold up?"],
-    ["Verify", "Independent lawyer, independent surveyor, traceable payments."],
-    ["Decide", "Proceed, renegotiate or walk away, with your eyes open."],
-  ] as [string, string][],
+    { icon: "chat", t: "Listen", d: "What you want to achieve and what worries you." },
+    { icon: "search", t: "Explore", d: "Relevant opportunities, understood in detail." },
+    { icon: "shield", t: "Verify", d: "Better questions, and professional checks where needed." },
+    { icon: "check", t: "Decide", d: "Only when you feel confident in the decision." },
+  ] as { icon: string; t: string; d: string }[],
   values: [
-    ["Transparency over persuasion", "If I can't show it, I won't claim it."],
-    ["Documents before deposits", "Nothing is paid until the paperwork has been independently checked."],
-    ["Long-term value over quick wins", "Property is held for years. Decisions should be made for years."],
-    ["Honest answers", "Including “not this one” and “not yet”."],
-  ] as [string, string][],
+    { icon: "chat", t: "Listen first", d: "Listening before recommending." },
+    { icon: "book", t: "Explain clearly", d: "Understanding before presenting." },
+    { icon: "shield", t: "Verify always", d: "Due diligence before commitment." },
+    { icon: "heart", t: "Never pressure", d: "No one rushed into a decision." },
+  ] as { icon: string; t: string; d: string }[],
+  vision: {
+    quote: "Property decisions should be informed, not rushed.",
+    points: [
+      { icon: "book", t: "Knowledge", d: "Clear, useful education on every step." },
+      { icon: "lightbulb", t: "Perspective", d: "Honest views you can weigh for yourself." },
+      { icon: "compass", t: "Guidance", d: "A useful starting point, whatever your goal." },
+    ] as { icon: string; t: string; d: string }[],
+    body: [
+      "JORBE SAMUEL was created around a simple belief: property decisions should be informed, not rushed.",
+      "My vision is to build a professional platform where people can find more than property opportunities. I want them to find knowledge, useful perspectives and guidance that help them approach real estate with greater clarity and confidence.",
+      "Whether you're considering your first property, exploring investment opportunities, planning for your family's future or looking to acquire property in Nigeria from abroad, I want this platform to be a useful starting point.",
+      "I'm continually learning, growing and developing my understanding of the industry. I believe credibility is built through knowledge, integrity, consistency and the willingness to keep improving.",
+    ],
+  },
+  closing: "I don't just want people to find a property. I want them to understand the decision they're making and feel confident about the path they're taking.",
   clients: [
-    "First-time buyers who want to avoid costly mistakes",
-    "Families making the largest purchase of their lives",
-    "Investors weighing yield against risk and liquidity",
-    "Nigerians abroad buying at a distance",
-  ],
+    { icon: "key", t: "First-time buyers", d: "Avoiding the expensive mistake." },
+    { icon: "family", t: "Families", d: "Planning for the future." },
+    { icon: "trending", t: "Investors", d: "Weighing opportunity against goals." },
+    { icon: "globe", t: "Nigerians abroad", d: "Knowing whom to trust." },
+  ] as { icon: string; t: string; d: string }[],
 };
 
 /* ───────────────────────── Imagery ───────────────────────── */
@@ -89,10 +124,11 @@ export const IMG = {
   breakBridge: "/images/lagos-bridge.jpg",
   breakNight: "/images/night-glass.jpg",
   skyline: "/images/lagos-skyline.jpg",
-  consultant: "/images/interior-a.jpg",
+  consultant: "/images/jorbe.jpg",
   architect: "/images/architect.jpg",
   family: "/images/family.jpg",
   cta: "/images/night-glass.jpg",
+  logo: "/images/logo.jpg",
 };
 
 export const SERVICE_IMG: Record<string, string> = {

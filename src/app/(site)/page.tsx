@@ -140,18 +140,18 @@ export default function Home() {
       <section className="container-x grid items-center gap-16 py-32 lg:grid-cols-12 lg:py-52" aria-labelledby="consultant">
         <div className="lg:col-span-5">
           <ImageReveal className="aspect-[4/5]">
-            <Photo src={IMG.consultant} alt="A calm, considered interior" className="h-full w-full" sizes="(min-width:1024px) 40vw, 100vw" />
+            <Photo src={IMG.consultant} alt="Portrait of Jorbe Samuel" className="h-full w-full" imgClassName="object-top" sizes="(min-width:1024px) 40vw, 100vw" />
           </ImageReveal>
         </div>
         <Reveal className="lg:col-span-6 lg:col-start-7">
           <p className="eyebrow flex gap-4"><span className="num">05</span> The consultant</p>
           <h2 id="consultant" className="display h-lg mt-8">Jorbe Samuel. <em>Questions first.</em></h2>
           <p className="lede mt-8">
-            I start with questions, not listings: what the money is for, what the documents actually prove, and what could go
-            wrong, before anything is paid.
+            My approach begins with understanding the person, not simply presenting a property. I believe in listening before
+            recommending, understanding before presenting and encouraging due diligence before commitment.
           </p>
           <p className="mt-8 max-w-xl border-l-2 border-gold pl-5 font-serif text-2xl italic">
-            You will know what you are buying, what it can and cannot prove, and what it costs, before you commit.
+            I want you to understand the decision you&apos;re making and feel confident about the path you&apos;re taking.
           </p>
           <Link href="/about" className="link-arrow mt-10">Read the full story <Arrow /></Link>
         </Reveal>

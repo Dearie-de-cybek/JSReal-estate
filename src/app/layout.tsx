@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     title: "Jorbe Samuel — Real Estate Consultant",
     description: "Property decisions deserve more than guesswork.",
     locale: "en_NG",
+    images: [{ url: "/images/logo.jpg", width: 1280, height: 720, alt: "JORBE SAMUEL — Real Estate Consultant" }],
   },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "/" },
