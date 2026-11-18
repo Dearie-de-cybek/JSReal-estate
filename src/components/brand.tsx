@@ -64,7 +64,7 @@ export function BrandLogo({ className, priority }: { className?: string; priorit
       height={430}
       priority={priority}
       sizes="160px"
-      className={cn("h-11 w-auto rounded-[2px] ring-1 ring-gold/50 sm:h-12", className)}
+      className={cn("h-12 w-auto rounded-[2px] ring-1 ring-gold/50 sm:h-14", className)}
     />
   );
 }
