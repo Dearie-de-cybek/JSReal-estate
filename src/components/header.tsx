@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Logo, Monogram } from "./brand";
+import { Logo, BrandLogo } from "./brand";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -115,7 +115,7 @@ export function Header() {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="flex items-center justify-between">
-                <Monogram size={38} />
+                <BrandLogo className="!h-12" />
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="flex h-10 w-10 items-center justify-center">
                   <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden>
                     <path d="M3 3l16 16M19 3L3 19" stroke="currentColor" strokeWidth="1" />

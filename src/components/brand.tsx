@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -53,11 +54,25 @@ export function Wordmark({ className, sub = true }: { className?: string; sub?: 
   );
 }
 
+/** Jorbe's own logo (gold script on navy), cropped from the brand banner. */
+export function BrandLogo({ className, priority }: { className?: string; priority?: boolean }) {
+  return (
+    <Image
+      src="/images/logo-header.jpg"
+      alt="JORBE SAMUEL — Real Estate Consultant"
+      width={960}
+      height={430}
+      priority={priority}
+      sizes="160px"
+      className={cn("h-11 w-auto rounded-[2px] ring-1 ring-gold/50 sm:h-12", className)}
+    />
+  );
+}
+
 export function Logo({ className }: { className?: string }) {
   return (
-    <Link href="/" aria-label="Jorbe Samuel — home" className={cn("flex items-center gap-3.5", className)}>
-      <Monogram size={40} />
-      <Wordmark className="hidden sm:flex" />
+    <Link href="/" aria-label="Jorbe Samuel — home" className={cn("flex items-center", className)}>
+      <BrandLogo priority />
     </Link>
   );
 }

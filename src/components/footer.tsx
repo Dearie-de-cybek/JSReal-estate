@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Monogram } from "./brand";
+import { BrandLogo } from "./brand";
 import { NewsletterForm } from "./forms";
 import { SITE, SOCIALS } from "@/lib/content";
 
@@ -18,7 +18,7 @@ export function Footer() {
       <div className="container-x pt-20 pb-10 sm:pt-24">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <Monogram size={64} className="text-ivory" />
+            <BrandLogo className="!h-24 sm:!h-28" />
             <p className="display h-sm mt-8 max-w-sm">Trust before transactions. <em>Knowledge before commitment.</em></p>
             <p className="eyebrow mt-6">Property • Wealth • Smart Decisions</p>
           </div>
